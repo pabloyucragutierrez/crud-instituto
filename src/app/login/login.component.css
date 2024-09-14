@@ -1,0 +1,93 @@
+.contenedor__login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  .login__form {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login__form h2 {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 1em;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-size: 0.875em;
+    margin-top: 0.5em;
+  }
+  
+  .btn-submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-submit:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .register-link {
+    margin-top: 1em;
+    text-align: center;
+  }
+  
+  .register-link p {
+    margin: 0;
+    font-size: 0.875em;
+    color: #333;
+  }
+  
+  .btn-register {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .btn-register:hover {
+    text-decoration: underline;
+  }
+  

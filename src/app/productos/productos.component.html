@@ -1,0 +1,96 @@
+<div class="productos__dashboard">
+  <div class="sidebar">
+    <nav>
+      <a class="menu-item" href="#">
+        <i class='bx bx-store'></i> Productos
+      </a>
+    </nav>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <h1>Panel de Administración de Productos</h1>
+      <button class="btn-add-product" (click)="openModal('add')">
+        <i class='bx bx-plus'></i> Agregar Producto
+      </button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Categoría</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>{{ producto.name }}</td>
+          <td>{{ producto.description }}</td>
+          <td>{{ producto.category }}</td>
+          <td>{{ producto.price | currency }}</td>
+          <td>{{ producto.stock }}</td>
+          <td>
+            <button class="btn-action edit" (click)="openModal('edit', producto)">
+              <i class='bx bx-edit'></i>
+            </button>
+            <button class="btn-action delete" (click)="openModal('delete', producto)">
+              <i class='bx bx-trash'></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal" [class.active]="modalType === 'add' || modalType === 'edit'">
+    <div class="modal-content">
+      <h2>{{ modalType === 'add' ? 'Agregar Producto' : 'Editar Producto' }}</h2>
+      <form (ngSubmit)="saveProduct()">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input id="name" [(ngModel)]="productForm.name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <textarea id="description" [(ngModel)]="productForm.description" name="description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Categoría</label>
+          <input id="category" [(ngModel)]="productForm.category" name="category" required />
+        </div>
+
+        <div class="form-group">
+          <label for="price">Precio</label>
+          <input id="price" [(ngModel)]="productForm.price" name="price" type="number" required />
+        </div>
+
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input id="stock" [(ngModel)]="productForm.stock" name="stock" type="number" required />
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn-save">Guardar</button>
+          <button type="button" class="btn-cancel" (click)="closeModal()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" [class.active]="modalType === 'delete'">
+    <div class="modal-content">
+      <h3>¿Estás seguro de eliminar este producto?</h3>
+      <p>{{ selectedProduct?.name }}</p>
+      <div class="modal-actions">
+        <button class="btn-delete" (click)="deleteProduct(selectedProduct?.id)">Eliminar</button>
+        <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
