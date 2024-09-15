@@ -15,7 +15,7 @@ export class LoginComponent {
   loginError: string | null = null;
   private apiUrl = 'https://crud-productos-nestjs-production.up.railway.app/ansur/api/auth/login';
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) { // Inyecta Router
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) { 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
